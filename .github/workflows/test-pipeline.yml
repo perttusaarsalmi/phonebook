@@ -8,7 +8,7 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  lint-and-test:
+  lint-and-build:
     runs-on: ubuntu-latest
 
     steps:
@@ -44,7 +44,7 @@ jobs:
           npm run lint
 
   deploy:
-    needs: lint-and-test
+    needs: lint-and-build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name != 'push'
 
